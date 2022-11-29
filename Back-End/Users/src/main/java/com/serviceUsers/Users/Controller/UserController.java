@@ -25,9 +25,9 @@ public class UserController {
 	@GetMapping()
 	public ResponseEntity<List<User>> fetchAllTeams() throws Exception {
 
-		List<User> listOfTeams = service.getAllTeams();
+		List<User> listOfUsers = service.findAllUsers();
 
-		return new ResponseEntity<>(listOfTeams, HttpStatus.OK);
+		return new ResponseEntity<>(listOfUsers, HttpStatus.OK);
 	}
 
 }

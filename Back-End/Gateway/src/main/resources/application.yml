@@ -22,14 +22,10 @@ spring:
           uri: lb://USER-SERVICE
           predicates:
           - Path=/users/**
-        - id: INFO-FLIGHT-SERVICE
-          uri: lb://INFO-FLIGHT-SERVICE
+        - id: SEARCH-FLIGHTS-SERVICE
+          uri: lb://SEARCH-FLIGHTS-SERVICE
           predicates:
-          - Path=/transactions/**
-        - id: SEARCH-FLIGHT-SERVICE
-          uri: lb://SEARCH-FLIGHT-SERVICE
-          predicates:
-          - Path=/transactions/**
+          - Path=/origins/**
        
 eureka:
   client:

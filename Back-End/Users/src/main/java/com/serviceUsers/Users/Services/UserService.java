@@ -14,7 +14,7 @@ public class UserService {
 	@Autowired
 	UsersRepo usersRepo;
 	
-	public List<User> getAllTeams(){
+	public List<User> findAllUsers(){
 		return usersRepo.findAllUsers();
 	}
 
