@@ -18,5 +18,10 @@ public class FligthOriginsService {
 	{
 		return originService.findAllFligthOrigins();
 	}
+	
+	public FlightOrigin selectOriginByName(String name)
+	{
+		return originService.selectOriginByName(name);
+	}
 
 }

@@ -7,5 +7,7 @@ import com.serviceSearchFlight.SearchFlight.Models.FlightOrigin;
 public interface FligthsRepo {
 	
 	public List<FlightOrigin> findAllFligthOrigins();
+	
+	public FlightOrigin selectOriginByName(String name);
 
 }

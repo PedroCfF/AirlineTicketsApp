@@ -1,6 +1,5 @@
 package com.serviceSearchFlight.SearchFlight.Repo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -21,6 +20,19 @@ public class FlightsRepoImpl implements FligthsRepo {
 	@Override
 	public List<FlightOrigin> findAllFligthOrigins() {
 		return origins; 
+	}
+
+	@Override
+	public FlightOrigin selectOriginByName(String name) {
+		for(int i=0;i<origins.size();i++)
+		{
+			if(origins.get(i).origin.equals(name))
+			{
+				return origins.get(i);
+			}
+		}
+		
+		return null;
 	}
 
 }
