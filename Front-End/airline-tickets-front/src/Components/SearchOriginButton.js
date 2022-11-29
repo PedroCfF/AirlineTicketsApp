@@ -5,10 +5,7 @@ const SearchOriginButton = (props) => {
   return (
     <>
       {props.selected ? (
-        <Link
-          className="text-light"
-          to={`/originFligths/${props.origins[props.activeIndex]}`}
-        >
+        <Link className="text-light" to={`/originFligths/${props.origin}`}>
           <Button variant="outline-primary">Search</Button>
         </Link>
       ) : (

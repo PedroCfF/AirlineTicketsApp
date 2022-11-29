@@ -1,44 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 
 import "./Origins.css";
 import SearchOriginButton from "./SearchOriginButton";
 
 const Origins = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeId, setActiveId] = useState(null);
   const [someSelected, setSomeSelectedTrue] = useState(false);
+  const [origins, setOrigins] = useState([]);
+  const [originName, setOriginName] = useState("");
+  const API_URL = "http://localhost:9191/origins";
 
-  const origins = ["Madrid", "Barcelona", "Paris", "Berlin", "London"];
+  const getOrigins = async () => {
+    const res = await fetch(API_URL);
+    const data = await res.json();
+    return data;
+  };
 
-  //   useEffect(() => {
-  //     console.log(activeIndex);
-  //   }, [activeIndex]);
+  useEffect(() => {
+    getOrigins().then((data) => setOrigins(data));
+  }, []);
 
   return (
     <>
       <ListGroup as="ul">
-        {origins.map((origin, index) => {
+        {origins.map((ori) => {
           return (
             <ListGroup.Item
               as="li"
-              active={activeIndex === index ? true : false}
+              active={activeId === ori.id ? true : false}
               action={true}
               onClick={() => {
-                setActiveIndex(index);
+                setActiveId(ori.id);
                 setSomeSelectedTrue(true);
+                setOriginName(ori.origin);
               }}
-              key={index}
+              key={ori.id}
             >
-              {origin}
+              {ori.origin}
             </ListGroup.Item>
           );
         })}
       </ListGroup>
-      <SearchOriginButton
-        selected={someSelected}
-        origins={origins}
-        activeIndex={activeIndex}
-      />
+      <SearchOriginButton selected={someSelected} origin={originName} />
     </>
   );
 };
