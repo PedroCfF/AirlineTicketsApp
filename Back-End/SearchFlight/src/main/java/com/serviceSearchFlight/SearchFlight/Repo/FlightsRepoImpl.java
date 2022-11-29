@@ -9,13 +9,20 @@ import com.serviceSearchFlight.SearchFlight.Models.FlightOrigin;
 @Component
 public class FlightsRepoImpl implements FligthsRepo {
 	
-	FlightOrigin origin1= new FlightOrigin("i1","Madrid");
-	FlightOrigin origin2= new FlightOrigin("i2","Paris");
-	FlightOrigin origin3= new FlightOrigin("i3","Londres");
-	FlightOrigin origin4= new FlightOrigin("i4","Barcelona");
-	FlightOrigin origin5= new FlightOrigin("i5","Roma");
+	String[] destinations1 = {"Sevilla", "Roma", "Frankfurt"};
+	String[] destinations2 = {"Sevilla", "Roma", "Frankfurt"};
+	String[] destinations3 = {"Sevilla", "Roma", "Frankfurt"};
+	String[] destinations4 = {"Sevilla", "Roma", "Frankfurt"};
+	String[] destinations5 = {"Sevilla", "Roma", "Frankfurt"};
+	String[] destinations6 = {"Sevilla", "Roma", "Frankfurt"};
 	
-	List<FlightOrigin> origins=List.of(origin1, origin2, origin3, origin4,origin5);
+	FlightOrigin origin1= new FlightOrigin("i1","Madrid", destinations1);
+	FlightOrigin origin2= new FlightOrigin("i2","Paris", destinations2);
+	FlightOrigin origin3= new FlightOrigin("i3","Londres", destinations3);
+	FlightOrigin origin4= new FlightOrigin("i4","Barcelona", destinations4);
+	FlightOrigin origin5= new FlightOrigin("i5","Roma", destinations5);
+	
+	List<FlightOrigin> origins=List.of(origin1, origin2, origin3, origin4, origin5);
 
 	@Override
 	public List<FlightOrigin> findAllFligthOrigins() {
