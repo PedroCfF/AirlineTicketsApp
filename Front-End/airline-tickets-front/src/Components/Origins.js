@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
-import Button from "react-bootstrap/Button";
-import { Link, useParams } from "react-router-dom";
+
+import "./Origins.css";
+import SearchOriginButton from "./SearchOriginButton";
 
 const Origins = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [someSelected, setSomeSelectedTrue] = useState(false);
 
   const origins = ["Madrid", "Barcelona", "Paris", "Berlin", "London"];
 
@@ -20,8 +22,11 @@ const Origins = () => {
             <ListGroup.Item
               as="li"
               active={activeIndex === index ? true : false}
-              action
-              onClick={() => setActiveIndex(index)}
+              action={true}
+              onClick={() => {
+                setActiveIndex(index);
+                setSomeSelectedTrue(true);
+              }}
               key={index}
             >
               {origin}
@@ -29,12 +34,11 @@ const Origins = () => {
           );
         })}
       </ListGroup>
-      <Link
-        className="text-light"
-        to={`/originFligths/${origins[activeIndex]}`}
-      >
-        <Button variant="outline-primary">Search</Button>
-      </Link>
+      <SearchOriginButton
+        selected={someSelected}
+        origins={origins}
+        activeIndex={activeIndex}
+      />
     </>
   );
 };
