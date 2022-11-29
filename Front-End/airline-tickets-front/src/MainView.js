@@ -1,5 +1,6 @@
 import Origins from "./Components/Origins.js";
 import Container from "react-bootstrap/Container";
+import "./MainView.css";
 
 function MainView() {
   return (
