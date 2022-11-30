@@ -67,19 +67,39 @@ public class FligthServiceImpl implements FligthService {
 
 	@Override
 	public List<Flight> findAvailableFlights(String destination) {
+		
 	List<Flight> flights =  flightsRepo.findAll();
 		
 	List<Flight> destinations = new ArrayList<>();
 			
 	for(Flight f: flights)
 	     {
-			 if(f.origin.equals(destination))
+			 if(f.destination.equals(destination))
 			 {
 			    destinations.add(f);
 			 }
 				  			    
 		}
 				
-    return destinations;
+        return destinations;
+	}
+
+	@Override
+	public List<Flight> filterByAirline(String destination) {
+		
+		List<Flight> flights =  flightsRepo.findAll();
+		
+		List<Flight> byAirline = new ArrayList<>();
+				
+		for(Flight f: flights)
+		     {
+				 if(f.airLine.equals(byAirline))
+				 {
+					 byAirline.add(f);
+				 }
+					  			    
+			}
+					
+	        return byAirline;
 	}	
 }

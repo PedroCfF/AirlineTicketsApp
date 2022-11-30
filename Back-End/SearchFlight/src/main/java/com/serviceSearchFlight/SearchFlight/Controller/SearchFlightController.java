@@ -65,6 +65,14 @@ public class SearchFlightController {
         return new ResponseEntity<>(flightsAvailable, HttpStatus.OK);
     }
 	
+	@GetMapping(path="/{airline}")
+    public ResponseEntity<List<Flight>> filterByAirline(@PathVariable String airline) throws Exception {
+
+        List<Flight> flightsByAirline = sfService.findAvailableFlights(airline);
+
+        return new ResponseEntity<>(flightsByAirline, HttpStatus.OK);
+    }
+	
 	@PostMapping()
 	public ResponseEntity<Flight> saveTeam(@RequestBody Flight flight) throws Exception {
 
