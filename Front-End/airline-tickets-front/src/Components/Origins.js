@@ -8,7 +8,7 @@ const Origins = () => {
   const [activeId, setActiveId] = useState(null);
   const [someSelected, setSomeSelectedTrue] = useState(false);
   const [origins, setOrigins] = useState([]);
-  const [originName, setOriginName] = useState("");
+  const [originId, setOriginId] = useState("");
   const API_URL = "http://localhost:9191/origins";
 
   const getOrigins = async () => {
@@ -33,7 +33,7 @@ const Origins = () => {
               onClick={() => {
                 setActiveId(ori.id);
                 setSomeSelectedTrue(true);
-                setOriginName(ori.origin);
+                setOriginId(ori.id);
               }}
               key={ori.id}
             >
@@ -42,7 +42,7 @@ const Origins = () => {
           );
         })}
       </ListGroup>
-      <SearchOriginButton selected={someSelected} origin={originName} />
+      <SearchOriginButton selected={someSelected} origin={originId} />
     </>
   );
 };
