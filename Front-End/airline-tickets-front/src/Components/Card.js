@@ -29,6 +29,13 @@ function Card(props) {
     setShow(true);
   };
 
+  const dateToString = (date) => {
+    const day = date.toLocaleString("en-US", { day: "2-digit" });
+    const month = outbondDate.toLocaleString("en-US", { month: "2-digit" });
+    const year = date.getFullYear();
+    return day + "/" + month + "/" + year;
+  };
+
   console.log(destination);
   return (
     <>
@@ -74,7 +81,10 @@ function Card(props) {
             />
 
             {outbondDate === null ? null : (
-              <Link className="text-light" to={`/oneWay/${outbondDate}`}>
+              <Link
+                className="text-light"
+                to={`/oneWay/${dateToString(outbondDate)} `}
+              >
                 <button type="button" class="btn btn-primary">
                   Search
                 </button>
@@ -99,9 +109,16 @@ function Card(props) {
               onChange={(date) => setReturnDate(date)}
             />
             {outbondDate === null || returnDate === null ? null : (
-              <button type="button" class="btn btn-primary">
-                Search
-              </button>
+              <Link
+                className="text-light"
+                to={`/oneWay/${dateToString(outbondDate)}/${dateToString(
+                  returnDate
+                )}`}
+              >
+                <button type="button" class="btn btn-primary">
+                  Search
+                </button>
+              </Link>
             )}
           </Modal.Footer>
         ) : null}
