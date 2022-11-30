@@ -32,8 +32,8 @@ public class FligthServiceImpl implements FligthService {
 	List<String> origins = new ArrayList<>();
 	
 	for(Flight f: flights)
-		{
-		    if(origins.contains(f.origin)) continue;		    	
+		{	    	
+		    if(origins.contains(f.origin)) continue;
 			origins.add(f.origin);
 		}
 		

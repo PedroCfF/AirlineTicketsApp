@@ -12,6 +12,9 @@ public class Flight {
 	public String origin;
 	public String destination;
 	public String date;
+	public String time;
+	public String airLine;
+	public String flightNumber;
 	
 	public String getId() {
 		return id;
@@ -37,9 +40,27 @@ public class Flight {
 	public void setDate(String date) {
 		this.date = date;
 	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
+	}
+	public String getAirLine() {
+		return airLine;
+	}
+	public void setAirLine(String airLine) {
+		this.airLine = airLine;
+	}
+	public String getFlightNumber() {
+		return flightNumber;
+	}
+	public void setFlightNumber(String flightNumber) {
+		this.flightNumber = flightNumber;
+	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(date, destination, id, origin);
+		return Objects.hash(airLine, date, destination, flightNumber, id, origin, time);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -50,9 +71,10 @@ public class Flight {
 		if (getClass() != obj.getClass())
 			return false;
 		Flight other = (Flight) obj;
-		return Objects.equals(date, other.date) && Objects.equals(destination, other.destination)
-				&& Objects.equals(id, other.id) && Objects.equals(origin, other.origin);
+		return Objects.equals(airLine, other.airLine) && Objects.equals(date, other.date)
+				&& Objects.equals(destination, other.destination) && Objects.equals(flightNumber, other.flightNumber)
+				&& Objects.equals(id, other.id) && Objects.equals(origin, other.origin)
+				&& Objects.equals(time, other.time);
 	}
-	
 	
 }
