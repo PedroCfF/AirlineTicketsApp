@@ -1,13 +1,7 @@
 package com.serviceSearchFlight.SearchFlight.Repo;
 
-import java.util.List;
-
+import org.springframework.data.mongodb.repository.MongoRepository;
 import com.serviceSearchFlight.SearchFlight.Models.FlightOrigin;
 
-public interface FligthsRepo {
-	
-	public List<FlightOrigin> findAllFligthOrigins();
-	
-	public FlightOrigin selectOriginByName(String name);
-
+public interface FligthsRepo extends MongoRepository<FlightOrigin, String> {
 }

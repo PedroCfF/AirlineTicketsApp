@@ -1,22 +1,18 @@
 package com.serviceSearchFlight.SearchFlight.Models;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class FlightOrigin {
+	@Id
 	public String id;
 	public String origin;
-	public String[] destinations;
-	public String[] dates;
-	
-	public FlightOrigin() {
-		super();
-	}
-	
-	public FlightOrigin(String id, String origin, String[] destinations) {
-		super();
-		this.id = id;
-		this.origin = origin;
-		this.destinations = destinations;
-		
-	}
+	public List<String> destinations;
 	
 	public String getId() {
 		return id;
@@ -30,17 +26,34 @@ public class FlightOrigin {
 	public void setOrigin(String origin) {
 		this.origin = origin;
 	}
-	public String[] getDestinations() {
+	public List<String> getDestinations() {
 		return destinations;
 	}
-	public void setDestinations(String[] destinations) {
+	public void setDestinations(List<String> destinations) {
 		this.destinations = destinations;
 	}
-	public String[] getDates() {
-		return dates;
+	@Override
+	public int hashCode() {
+		return Objects.hash(destinations, id, origin);
 	}
-	public void setDates(String[] dates) {
-		this.dates = dates;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FlightOrigin other = (FlightOrigin) obj;
+		return Objects.equals(destinations, other.destinations) && Objects.equals(id, other.id)
+				&& Objects.equals(origin, other.origin);
 	}
+	
+	
+	
+	
+	
+
+	
 	
 }

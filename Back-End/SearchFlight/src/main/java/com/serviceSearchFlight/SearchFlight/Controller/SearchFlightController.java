@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,21 +28,26 @@ public class SearchFlightController {
 	@GetMapping()
 	public ResponseEntity<List<FlightOrigin>> fetchAllOrigins() throws Exception {
 
-		List<FlightOrigin> listOfOrigins = sfService.findAllFligthOrigins();
+		List<FlightOrigin> listOfOrigins = sfService.findAll();
 
 		return new ResponseEntity<>(listOfOrigins, HttpStatus.OK);
 	}
 	
-	@GetMapping(path="/{name}")
-	public ResponseEntity<FlightOrigin> GetOrigin(@PathVariable String name) throws Exception {
-
-		FlightOrigin origin = sfService.selectOriginByName(name);
-		
-		if (origin == null) {
-			throw new Exception("ID not found: " + name);
+	@GetMapping(path = "/{id}")
+	public ResponseEntity<FlightOrigin> fetchTeam(@PathVariable String id) throws Exception {
+		FlightOrigin team = sfService.getOrigin(id);
+		if (team == null) {
+			throw new Exception("ID not found: " + id);
 		}
-		
-		return new ResponseEntity<>(origin, HttpStatus.OK);
+		return new ResponseEntity<>(team, HttpStatus.OK);
+	}
+
+	@PostMapping()
+	public ResponseEntity<FlightOrigin> saveTeam(@RequestBody FlightOrigin origin) throws Exception {
+
+		sfService.save(origin);
+
+		return new ResponseEntity<>(origin, HttpStatus.CREATED);
 	}
 
 }

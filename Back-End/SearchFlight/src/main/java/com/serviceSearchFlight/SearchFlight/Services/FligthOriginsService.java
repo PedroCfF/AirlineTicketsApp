@@ -2,26 +2,16 @@ package com.serviceSearchFlight.SearchFlight.Services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.serviceSearchFlight.SearchFlight.Models.FlightOrigin;
-import com.serviceSearchFlight.SearchFlight.Repo.FlightsRepoImpl;
 
-@Service
-public class FligthOriginsService {
+public interface FligthOriginsService {
 	
-	@Autowired 
-	FlightsRepoImpl originService;
+	public List<FlightOrigin> findAll();
 	
-	public List<FlightOrigin> findAllFligthOrigins()
-	{
-		return originService.findAllFligthOrigins();
-	}
-	
-	public FlightOrigin selectOriginByName(String name)
-	{
-		return originService.selectOriginByName(name);
-	}
+	public FlightOrigin getOrigin(String id);
+
+	public FlightOrigin save(FlightOrigin origin);
 
 }
