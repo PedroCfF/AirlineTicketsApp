@@ -15,7 +15,6 @@ public class User {
 	public String passport;
 	public String email;
 	public List<Flight> flights;
-	
 	public String getId() {
 		return id;
 	}
@@ -28,11 +27,11 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getLastName() {
+	public String getLastname() {
 		return lastname;
 	}
-	public void setLastName(String lastName) {
-		this.lastname = lastName;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 	public String getNie() {
 		return nie;
@@ -76,6 +75,8 @@ public class User {
 				&& Objects.equals(name, other.name) && Objects.equals(nie, other.nie)
 				&& Objects.equals(passport, other.passport);
 	}
+	
+	
 
 	
 	
