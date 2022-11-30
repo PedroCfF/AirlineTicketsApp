@@ -19,6 +19,8 @@ public interface FligthService {
 	
 	List<Flight> findAvailableFlights(String destination);
 	
+	List<Flight> filterAvailableByDate(String date, List<Flight> availableFlights);
+	
 	List<Flight> filterByAirline(String airline);
 	
 	Flight saveFlight(Flight flight);
