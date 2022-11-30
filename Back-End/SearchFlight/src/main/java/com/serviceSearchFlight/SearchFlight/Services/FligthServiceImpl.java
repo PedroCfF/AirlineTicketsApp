@@ -33,6 +33,7 @@ public class FligthServiceImpl implements FligthService {
 	
 	for(Flight f: flights)
 		{
+		    if(origins.contains(f.origin)) continue;		    	
 			origins.add(f.origin);
 		}
 		
