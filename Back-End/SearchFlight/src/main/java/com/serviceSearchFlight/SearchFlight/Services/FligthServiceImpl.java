@@ -72,7 +72,7 @@ public class FligthServiceImpl implements FligthService {
 			
 	for(Flight f: flights)
 	     {
-			 if(f.origin.equals(destination))
+			 if(f.destination.equals(destination))
 			 {
 			    destinations.add(f);
 			 }

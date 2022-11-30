@@ -3,12 +3,12 @@ import ContainerComponent from "./ContainerComponent";
 import { useState, useEffect } from "react";
 import Card from "./Card.js";
 
-const DestinationView = (props) => {
+const DestinationView = () => {
   const originObj = useParams();
-  const id = originObj.origin;
+  const city = originObj.origin;
   const [destinations, setDestinations] = useState([]);
 
-  const API_URL = "http://localhost:9191/origins";
+  const API_URL = "http://localhost:9191/flights/origins/" + city;
 
   const getOrigins = async () => {
     const res = await fetch(API_URL);
@@ -18,13 +18,12 @@ const DestinationView = (props) => {
 
   useEffect(() => {
     getOrigins().then((data) => setDestinations(data));
-    console.log(destinations);
   }, []);
 
   return (
     <ContainerComponent>
       <div className="row justify-content-lg-center mb-4">
-        {destinations?.map(({ id, origin }) => (
+        {destinations?.map((origin) => (
           <Card destination={origin}></Card>
         ))}
       </div>
