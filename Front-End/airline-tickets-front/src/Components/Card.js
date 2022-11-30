@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 function Card(props) {
   const destination = props.destination;
+  const origin = props.origin;
   const [show, setShow] = useState(false);
   const [selected, setSelected] = useState("");
   const [showRounded, setShowRounded] = useState(false);
@@ -36,7 +37,6 @@ function Card(props) {
     return day + "/" + month + "/" + year;
   };
 
-  console.log(destination);
   return (
     <>
       {/*Botones con los destinos */}
@@ -83,7 +83,9 @@ function Card(props) {
             {outbondDate === null ? null : (
               <Link
                 className="text-light"
-                to={`/oneWay/${dateToString(outbondDate)} `}
+                to={`/oneWay/${origin}/${destination}/${dateToString(
+                  outbondDate
+                )} `}
               >
                 <button type="button" class="btn btn-primary">
                   Search
@@ -111,9 +113,9 @@ function Card(props) {
             {outbondDate === null || returnDate === null ? null : (
               <Link
                 className="text-light"
-                to={`/oneWay/${dateToString(outbondDate)}/${dateToString(
-                  returnDate
-                )}`}
+                to={`/oneWay/${origin}/${destination}/${dateToString(
+                  outbondDate
+                )}/${dateToString(returnDate)}`}
               >
                 <button type="button" class="btn btn-primary">
                   Search
