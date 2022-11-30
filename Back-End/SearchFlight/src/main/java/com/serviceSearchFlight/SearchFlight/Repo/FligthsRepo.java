@@ -4,7 +4,4 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.serviceSearchFlight.SearchFlight.Models.Flight;
 
-public interface FligthsRepo extends MongoRepository<Flight, String> {
-	
-	
-}
+public interface FligthsRepo extends MongoRepository<Flight, String> {}

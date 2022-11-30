@@ -49,12 +49,20 @@ public class SearchFlightController {
         return new ResponseEntity<>(origins, HttpStatus.OK);
     }
 	
-	@GetMapping(path="/origins/{id}")
-    public ResponseEntity<List<String>> GetDestinations(@PathVariable String id) throws Exception {
+	@GetMapping(path="/origins/{origin}")
+    public ResponseEntity<List<String>> GetDestinations(@PathVariable String origin) throws Exception {
 
-        List<String> destinations = sfService.findDestinationsByOrigin(id);
+        List<String> destinations = sfService.findDestinationsByOrigin(origin);
 
         return new ResponseEntity<>(destinations, HttpStatus.OK);
+    }
+	
+	@GetMapping(path="/origins/{origin}/{destination}")
+    public ResponseEntity<List<Flight>> GetFlightsSelected(@PathVariable String destination) throws Exception {
+
+        List<Flight> flightsAvailable = sfService.findAvailableFlights(destination);
+
+        return new ResponseEntity<>(flightsAvailable, HttpStatus.OK);
     }
 	
 	@PostMapping()

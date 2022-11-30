@@ -15,7 +15,9 @@ public interface FligthService {
 	
 	List<String> findAllOrigins();
 	
-	List<String> findDestinationsByOrigin(String id);
+	List<String> findDestinationsByOrigin(String origin);
+	
+	List<Flight> findAvailableFlights(String destination);
 	
 	Flight saveFlight(Flight flight);
 }
