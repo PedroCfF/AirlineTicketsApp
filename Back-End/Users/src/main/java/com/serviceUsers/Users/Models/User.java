@@ -1,17 +1,20 @@
 package com.serviceUsers.Users.Models;
 
 import java.util.List;
+import java.util.Objects;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="users")
 public class User {
 	
 	public String id;
 	public String name;
-	public String lastName;
+	public String lastname;
 	public String nie;
 	public String passport;
 	public String email;
-	public List<UserFlight> userFlights;
-	public List<Baggage> userBaggages;
+	public List<Flight> flights;
 	
 	public String getId() {
 		return id;
@@ -26,10 +29,10 @@ public class User {
 		this.name = name;
 	}
 	public String getLastName() {
-		return lastName;
+		return lastname;
 	}
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.lastname = lastName;
 	}
 	public String getNie() {
 		return nie;
@@ -49,17 +52,32 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public List<UserFlight> getUserFlights() {
-		return userFlights;
+	public List<Flight> getFlights() {
+		return flights;
 	}
-	public void setUserFlights(List<UserFlight> userFlights) {
-		this.userFlights = userFlights;
+	public void setFlights(List<Flight> flights) {
+		this.flights = flights;
 	}
-	public List<Baggage> getUserBaggages() {
-		return userBaggages;
+	@Override
+	public int hashCode() {
+		return Objects.hash(email, flights, id, lastname, name, nie, passport);
 	}
-	public void setUserBaggages(List<Baggage> userBaggages) {
-		this.userBaggages = userBaggages;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(email, other.email) && Objects.equals(flights, other.flights)
+				&& Objects.equals(id, other.id) && Objects.equals(lastname, other.lastname)
+				&& Objects.equals(name, other.name) && Objects.equals(nie, other.nie)
+				&& Objects.equals(passport, other.passport);
 	}
+
+	
+	
 }
 

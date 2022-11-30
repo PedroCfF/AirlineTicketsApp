@@ -2,20 +2,17 @@ package com.serviceUsers.Users.Services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.serviceUsers.Users.Models.User;
-import com.serviceUsers.Users.Repo.UsersRepo;
 
 @Service
-public class UserService {
+public interface UserService {
 	
-	@Autowired
-	UsersRepo usersRepo;
+	public List<User> findAllUsers();
 	
-	public List<User> findAllUsers(){
-		return usersRepo.findAllUsers();
-	}
+	public User saveUser(User user);
 
 }

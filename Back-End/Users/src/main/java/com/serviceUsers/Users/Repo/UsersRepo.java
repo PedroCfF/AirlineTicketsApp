@@ -1,11 +1,7 @@
 package com.serviceUsers.Users.Repo;
 
-import java.util.List;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.serviceUsers.Users.Models.User;
 
-public interface UsersRepo {
-	
-	public List<User> findAllUsers();
-
-}
+public interface UsersRepo extends MongoRepository<User, String>{}
