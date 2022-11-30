@@ -68,7 +68,7 @@ public class SearchFlightController {
 	@GetMapping(path="/{airline}")
     public ResponseEntity<List<Flight>> filterByAirline(@PathVariable String airline) throws Exception {
 
-        List<Flight> flightsByAirline = sfService.findAvailableFlights(airline);
+        List<Flight> flightsByAirline = sfService.filterByAirline(airline);
 
         return new ResponseEntity<>(flightsByAirline, HttpStatus.OK);
     }
