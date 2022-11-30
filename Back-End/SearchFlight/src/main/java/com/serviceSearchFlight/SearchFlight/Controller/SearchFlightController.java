@@ -13,41 +13,56 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.serviceSearchFlight.SearchFlight.Models.FlightOrigin;
-import com.serviceSearchFlight.SearchFlight.Services.FligthOriginsService;
+import com.serviceSearchFlight.SearchFlight.Models.Flight;
+import com.serviceSearchFlight.SearchFlight.Services.FligthService;
 
 
 @RestController
-@RequestMapping("origins")
+@RequestMapping("flights")
 @CrossOrigin
 public class SearchFlightController {
 	
 	@Autowired
-	FligthOriginsService sfService;
+	FligthService sfService;
 
 	@GetMapping()
-	public ResponseEntity<List<FlightOrigin>> fetchAllOrigins() throws Exception {
+	public ResponseEntity<List<Flight>> fetchAllFlights() throws Exception {
 
-		List<FlightOrigin> listOfOrigins = sfService.findAll();
+		List<Flight> listOfOrigins = sfService.findAll();
 
 		return new ResponseEntity<>(listOfOrigins, HttpStatus.OK);
 	}
 	
-	@GetMapping(path = "/{id}")
-	public ResponseEntity<FlightOrigin> fetchTeam(@PathVariable String id) throws Exception {
-		FlightOrigin team = sfService.getOrigin(id);
-		if (team == null) {
-			throw new Exception("ID not found: " + id);
-		}
-		return new ResponseEntity<>(team, HttpStatus.OK);
-	}
+	@GetMapping(path="/{id}")
+    public ResponseEntity<Flight> GetFlight(@PathVariable String id) throws Exception {
+		
+		Flight flight = sfService.findFlight(id);
 
+        return new ResponseEntity<>(flight, HttpStatus.OK);
+    }
+	
+	@GetMapping(path="/origins")
+    public ResponseEntity<List<String>> GetOrigins() throws Exception {
+
+        List<String> origins = sfService.findAllOrigins();
+
+        return new ResponseEntity<>(origins, HttpStatus.OK);
+    }
+	
+	@GetMapping(path="/origins/{id}")
+    public ResponseEntity<List<String>> GetDestinations(@PathVariable String id) throws Exception {
+
+        List<String> destinations = sfService.findDestinationsByOrigin(id);
+
+        return new ResponseEntity<>(destinations, HttpStatus.OK);
+    }
+	
 	@PostMapping()
-	public ResponseEntity<FlightOrigin> saveTeam(@RequestBody FlightOrigin origin) throws Exception {
+	public ResponseEntity<Flight> saveTeam(@RequestBody Flight flight) throws Exception {
 
-		sfService.save(origin);
-
-		return new ResponseEntity<>(origin, HttpStatus.CREATED);
+		sfService.saveFlight(flight);
+		
+		return new ResponseEntity<>(flight, HttpStatus.CREATED);
 	}
-
+	
 }
