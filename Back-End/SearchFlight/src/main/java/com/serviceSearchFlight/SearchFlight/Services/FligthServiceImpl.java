@@ -32,7 +32,7 @@ public class FligthServiceImpl implements FligthService {
 	List<String> origins = new ArrayList<>();
 	
 	for(Flight f: flights)
-		{	    	
+		{
 		    if(origins.contains(f.origin)) continue;
 			origins.add(f.origin);
 		}
@@ -67,19 +67,55 @@ public class FligthServiceImpl implements FligthService {
 
 	@Override
 	public List<Flight> findAvailableFlights(String destination) {
+		
 	List<Flight> flights =  flightsRepo.findAll();
 		
-	List<Flight> destinations = new ArrayList<>();
+	List<Flight> availableFlights = new ArrayList<>();
 			
 	for(Flight f: flights)
 	     {
 			 if(f.destination.equals(destination))
 			 {
-			    destinations.add(f);
-			 }
-				  			    
-		}
-				
-    return destinations;
+				 availableFlights.add(f);
+			 }			    
+		}	
+        return availableFlights;
+	}
+	
+	@Override
+	public List<Flight> filterAvailableByDate(String date, List<Flight> availableFlights) {
+		
+			
+	List<Flight> flightsAvailableByDate = new ArrayList<>();
+					
+	for(Flight f: availableFlights)
+	    {
+            if(f.airline.equals(date))
+		    {
+            	flightsAvailableByDate.add(f);
+		    }
+	    }
+						
+		    return flightsAvailableByDate;
 	}	
+
+	@Override
+	public List<Flight> filterByAirline(String airline) {
+		
+	System.out.println(airline);
+		
+	List<Flight> flights =  flightsRepo.findAll();
+		
+	List<Flight> flightsByAirline = new ArrayList<>();
+				
+	for(Flight f: flights)
+		 {
+			if(f.airline.equals(airline))
+			{
+				flightsByAirline.add(f);
+			}
+         }
+					
+	    return flightsByAirline;
+	}
 }

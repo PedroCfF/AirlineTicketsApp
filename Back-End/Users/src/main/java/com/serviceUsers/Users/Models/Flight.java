@@ -1,4 +1,4 @@
-package com.serviceSearchFlight.SearchFlight.Models;
+package com.serviceUsers.Users.Models;
 
 import java.util.Objects;
 
@@ -15,7 +15,6 @@ public class Flight {
 	public String time;
 	public String airline;
 	public String flightnumber;
-
 	public String getId() {
 		return id;
 	}
@@ -46,7 +45,6 @@ public class Flight {
 	public void setTime(String time) {
 		this.time = time;
 	}
-
 	public String getAirline() {
 		return airline;
 	}
@@ -74,9 +72,9 @@ public class Flight {
 		Flight other = (Flight) obj;
 		return Objects.equals(airline, other.airline) && Objects.equals(date, other.date)
 				&& Objects.equals(destination, other.destination) && Objects.equals(flightnumber, other.flightnumber)
-
 				&& Objects.equals(id, other.id) && Objects.equals(origin, other.origin)
 				&& Objects.equals(time, other.time);
 	}
+	
 	
 }
