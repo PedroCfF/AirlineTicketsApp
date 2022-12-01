@@ -23,7 +23,7 @@ const DestinationView = () => {
 
   return (
     <ContainerComponent>
-      <div className="row justify-content-lg-center mb-4">
+      <div className="row d-flex flex-column align-content-center justify-content-lg-center mb-4">
         {destinations?.map((dest) => (
           <Card destination={dest} origin={city}></Card>
         ))}
