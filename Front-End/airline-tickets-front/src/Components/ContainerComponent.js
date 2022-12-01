@@ -11,7 +11,7 @@ function ContainerComponent(props) {
     <>
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">Airlines</Navbar.Brand>
+          <Navbar.Brand href="/">Airlines</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -20,6 +20,9 @@ function ContainerComponent(props) {
               </Link>{" "}
               <Link className="text-dark" to={`/fligths`}>
                 Flights
+              </Link>
+              <Link className="text-dark" to={`/users`}>
+                Users
               </Link>
             </Nav>
           </Navbar.Collapse>

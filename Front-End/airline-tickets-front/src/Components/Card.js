@@ -34,7 +34,7 @@ function Card(props) {
     const day = date.toLocaleString("en-US", { day: "2-digit" });
     const month = outbondDate.toLocaleString("en-US", { month: "2-digit" });
     const year = date.getFullYear();
-    return day + "/" + month + "/" + year;
+    return day + "-" + month + "-" + year;
   };
 
   return (
