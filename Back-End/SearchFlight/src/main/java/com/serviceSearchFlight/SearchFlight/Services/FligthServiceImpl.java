@@ -84,16 +84,13 @@ public class FligthServiceImpl implements FligthService {
 	
 	@Override
 	public List<Flight> filterAvailableByDate(String date, List<Flight> availableFlights) {
-		
-	System.out.println(date);
-	
+			
 	List<Flight> flightsAvailableByDate = new ArrayList<>();
 					
 	for(Flight f: availableFlights)
 	    {		
             if(f.date.equals(date))
 		    {
-            	System.out.println("holi");
             	flightsAvailableByDate.add(f);
 		    }
 	    }
