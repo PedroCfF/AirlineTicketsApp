@@ -17,6 +17,9 @@ function ContainerComponent(props) {
             <Nav className="me-auto">
               <Link className="text-dark" to={`/`}>
                 Home
+              </Link>{" "}
+              <Link className="text-dark" to={`/fligths`}>
+                Flights
               </Link>
             </Nav>
           </Navbar.Collapse>

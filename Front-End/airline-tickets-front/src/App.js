@@ -5,6 +5,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
 import MainView from "./MainView";
 import SearchFligths from "./Components/SearchFlights";
+import AllFlights from "./Components/AllFlights";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           path="/oneWay/:origin/:destination/:day/:month/:year"
           element={<SearchFligths></SearchFligths>}
         ></Route>
+        <Route path="/fligths" element={<AllFlights></AllFlights>}></Route>
       </Routes>
     </>
   );
