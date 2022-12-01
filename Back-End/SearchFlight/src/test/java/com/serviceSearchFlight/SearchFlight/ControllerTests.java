@@ -30,12 +30,12 @@ public class ControllerTests {
         testRestTemplate = new TestRestTemplate(restTemplateBuilder);
     }
 	
-//	@Test
-//    void fetchOrigins() {
-//        ResponseEntity<Flight[]> response  =
-//                testRestTemplate.getForEntity("users", FlightOrigin[].class);
-//        
-//        assertEquals(HttpStatus.OK, response.getStatusCode());
-//    }
+	@Test
+    void fetchOrigins() {
+        ResponseEntity<Flight[]> response  =
+                testRestTemplate.getForEntity("users", Flight[].class);
+        
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
 
 }
