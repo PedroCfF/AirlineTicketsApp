@@ -16,7 +16,7 @@ function App() {
           element={<DestinationView />}
         ></Route>
         <Route
-          path="/oneWay/:outBond"
+          path="/oneWay/:origin/:destination/:day/:month/:year"
           element={<SearchFligths></SearchFligths>}
         ></Route>
       </Routes>
