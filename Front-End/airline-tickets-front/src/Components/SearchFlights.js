@@ -6,9 +6,7 @@ const SearchFligths = () => {
   const params = useParams();
   const origin = params.origin;
   const destination = params.destination;
-  const day = params.day;
-  const month = params.month;
-  const year = params.year;
+  const date = params.date;
   const [flights, setFlights] = useState([]);
 
   const API_URL =
@@ -17,11 +15,7 @@ const SearchFligths = () => {
     "/" +
     destination +
     "/" +
-    day +
-    "-" +
-    month +
-    "-" +
-    year;
+    date;
 
   const getFlights = async () => {
     const res = await fetch(API_URL);
@@ -30,6 +24,7 @@ const SearchFligths = () => {
   };
 
   useEffect(() => {
+    console.log(API_URL);
     getFlights().then((data) => setFlights(data));
   }, []);
 
