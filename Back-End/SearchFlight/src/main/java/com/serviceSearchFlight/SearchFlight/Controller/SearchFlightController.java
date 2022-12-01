@@ -72,7 +72,7 @@ public class SearchFlightController {
         
         List<Flight> flightsAvailableFilteredByAirline = sfService.filterAvailableByDate(date, flightsAvailable);
 
-        return new ResponseEntity<>(flightsAvailable, HttpStatus.OK);
+        return new ResponseEntity<>(flightsAvailableFilteredByAirline, HttpStatus.OK);
     }
 	
 	@GetMapping(path="/filter/{airline}")
