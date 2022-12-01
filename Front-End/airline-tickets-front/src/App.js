@@ -4,6 +4,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 import { Routes, Route } from "react-router-dom";
 import MainView from "./MainView";
+import SearchFligths from "./Components/SearchFlights";
 
 function App() {
   return (
@@ -13,6 +14,10 @@ function App() {
         <Route
           path="/originFligths/:origin"
           element={<DestinationView />}
+        ></Route>
+        <Route
+          path="/oneWay/:origin/:destination/:day/:month/:year"
+          element={<SearchFligths></SearchFligths>}
         ></Route>
       </Routes>
     </>

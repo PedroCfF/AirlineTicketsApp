@@ -15,6 +15,7 @@ public class Flight {
 	public String time;
 	public String airline;
 	public String flightnumber;
+	
 	public String getId() {
 		return id;
 	}
@@ -75,6 +76,5 @@ public class Flight {
 				&& Objects.equals(id, other.id) && Objects.equals(origin, other.origin)
 				&& Objects.equals(time, other.time);
 	}
-	
 	
 }
