@@ -24,7 +24,6 @@ const SearchFligths = () => {
   };
 
   useEffect(() => {
-    console.log(API_URL);
     getFlights().then((data) => setFlights(data));
   }, []);
 
